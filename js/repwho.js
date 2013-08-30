@@ -1,25 +1,34 @@
-$(document).ready(
-	$.getJSON('https://reps.mozilla.org/api/v1/rep/?offset=0&limit=0&group=council&callback=?',
-		function (data) {
-			var id = Math.floor(Math.random() * data.objects.length)
-			,	rep = data.objects[id];
+(function () {
 
-			window.data = data;
+	window.repwho = {};
 
-			$("#rep_image").attr("data-id", id).attr("src", rep.profile.avatar_url + "&size=256");
-			console.log(rep.profile.avatar_url);
+	repwho.fetch = function (mode) {
+		var url = "https://reps.mozilla.org/api/v1/rep/?offset=0&limit=0&callback=?&group=" + mode;
+		$.getJSON( url,
+			function (data) {
+				repwho.data = data;
 
-			// $("img").on("click", function (event) {
-			// 	console.log(data.objects[$(this).data("id")].fullname);
-			// });
-		},
-		function (error) {
-			console.log(error);
-		}
-	)
-);
+				var id = Math.floor(Math.random() * repwho.data.objects.length)
+				,	rep = repwho.data.objects[id];
 
-$("#mode_selector").on("click", "button", function () {
-	$("#mode_selector").hide();
-	$("#rep_quiz").show();
-});
+				$("#rep_image").attr("data-id", id).attr("src", rep.profile.avatar_url + "&size=256");
+				$("#rep_names").html(
+					"<button id='option_1'>"+ rep.fullname +"</button>" +
+					"<button id='option_2'>Option 2</button>" +
+					"<button id='option_3'>Option 3</button>" +
+					"<button id='option_4'>Option 4</button>"
+				);
+			},
+			function (error) {
+				console.log(error);
+			}
+		)
+	}
+
+	$("#mode_selector").on("click", "button", function () {
+		window.mode = $(this).data("mode");
+		repwho.fetch(mode);
+		$("#mode_selector").hide();
+		$("#rep_quiz").show();
+	});
+})();
