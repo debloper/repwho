@@ -30,13 +30,9 @@ body {
 }
 
 #rep_image {
-    border: none;
-    border-radius: 100px;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    margin-top: 30px;
-    background: url('https://www.libravatar.org/resize/?email_hash=5f4cb4b3af32314213d624496dd2c830&size=200&https=1');
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 1px 1px 4px #444;
 }
 
 #rep_names button{
