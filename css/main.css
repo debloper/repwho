@@ -35,6 +35,10 @@ body {
     box-shadow: 1px 1px 4px #444;
 }
 
+#rep_quiz {
+    display: none;
+}
+
 #rep_names button{
     margin: 0 auto;
     margin-top: 10px;
