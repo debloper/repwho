@@ -9,6 +9,7 @@
 				repwho.data = data;
 				repwho.pick();
 				repwho.pushDOM();
+				$("#rep_names button").shuffle();
 			},
 			function (error) {
 				console.log(error);
