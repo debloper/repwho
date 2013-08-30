@@ -21,13 +21,19 @@
 		repwho.rep = repwho.data.objects[repwho.id];
 	};
 
+	repwho.random = function () {
+		repwho.tmp = Math.floor(Math.random() * repwho.data.objects.length);
+		if (repwho.tmp == repwho.id) repwho.random();
+		return repwho.tmp;
+	};
+
 	repwho.pushDOM = function () {
 		$("#rep_image").attr("data-id", repwho.id).attr("src", repwho.rep.profile.avatar_url + "&size=256");
 		$("#rep_names").html(
 			"<button id='option_1'>"+ repwho.rep.fullname +"</button>" +
-			"<button id='option_2'>Option 2</button>" +
-			"<button id='option_3'>Option 3</button>" +
-			"<button id='option_4'>Option 4</button>"
+			"<button id='option_2'>"+ repwho.data.objects[repwho.random()].fullname +"</button>" +
+			"<button id='option_2'>"+ repwho.data.objects[repwho.random()].fullname +"</button>" +
+			"<button id='option_2'>"+ repwho.data.objects[repwho.random()].fullname +"</button>"
 		);
 	};
 
@@ -38,3 +44,27 @@
 		$("#rep_quiz").show();
 	});
 })();
+
+(function($){
+
+	$.fn.shuffle = function() {
+
+		var allElems = this.get(),
+			getRandom = function(max) {
+				return Math.floor(Math.random() * max);
+			},
+			shuffled = $.map(allElems, function(){
+				var random = getRandom(allElems.length),
+					randEl = $(allElems[random]).clone(true)[0];
+				allElems.splice(random, 1);
+				return randEl;
+			});
+
+		this.each(function(i){
+			$(this).replaceWith($(shuffled[i]));
+		});
+
+		return $(shuffled);
+	};
+
+})(jQuery);
