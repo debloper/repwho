@@ -38,6 +38,15 @@
 		);
 	};
 
+	repwho.reset = function () {
+		$("#mode_selector").show();
+		$("#rep_quiz").hide();
+		$("#quiz_result").hide();
+		$("#rep_image").removeAttr("src");
+		$("#rep_names").html("");
+		$("#baDumTss").html("");
+	};
+
 	$("#mode_selector").on("click", "button", function () {
 		window.mode = $(this).data("mode");
 		repwho.go(mode);
@@ -49,10 +58,12 @@
 		$("#rep_quiz").hide();
 		$("#baDumTss").html("Yeehaw‎! xD");
 		$("#quiz_result").show();
+		window.setTimeout(repwho.reset, 2000);
 	}).on("click", ".falsch", function () {
 		$("#rep_quiz").hide();
 		$("#baDumTss").html("Booooooo! :P");
 		$("#quiz_result").show();
+		window.setTimeout(repwho.reset, 2000);
 	});
 })();
 
