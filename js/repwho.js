@@ -44,7 +44,6 @@
 		$("#rep_quiz").show();
 		$("#quiz_result").html("");
 		$("#quiz_result").hide();
-		$("#rep_image").attr("src", "");
 	};
 
 	repwho.repeat = function () {
