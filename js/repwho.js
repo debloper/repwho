@@ -31,10 +31,10 @@
 	repwho.pushDOM = function () {
 		$("#rep_image").attr("data-id", repwho.id).attr("src", repwho.rep.profile.avatar_url + "&size=256");
 		$("#rep_names").html(
-			"<button id='option_1'>"+ repwho.rep.fullname +"</button>" +
-			"<button id='option_2'>"+ repwho.data.objects[repwho.random()].fullname +"</button>" +
-			"<button id='option_2'>"+ repwho.data.objects[repwho.random()].fullname +"</button>" +
-			"<button id='option_2'>"+ repwho.data.objects[repwho.random()].fullname +"</button>"
+			"<button id='richtig'>"+ repwho.rep.fullname +"</button>" +
+			"<button class='falsch'>"+ repwho.data.objects[repwho.random()].fullname +"</button>" +
+			"<button class='falsch'>"+ repwho.data.objects[repwho.random()].fullname +"</button>" +
+			"<button class='falsch'>"+ repwho.data.objects[repwho.random()].fullname +"</button>"
 		);
 	};
 
@@ -43,6 +43,16 @@
 		repwho.go(mode);
 		$("#mode_selector").hide();
 		$("#rep_quiz").show();
+	});
+
+	$("#rep_names").on("click", "#richtig", function () {
+		$("#rep_quiz").hide();
+		$("#baDumTss").html("Yeehaw‎! xD");
+		$("#quiz_result").show();
+	}).on("click", ".falsch", function () {
+		$("#rep_quiz").hide();
+		$("#baDumTss").html("Booooooo! :P");
+		$("#quiz_result").show();
 	});
 })();
 
