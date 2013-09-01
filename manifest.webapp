@@ -1,9 +1,9 @@
 {
   "name": "Rep Who",
   "description": "Mozilla Rep Pic Quiz game",
-  "launch_path": "/",
+  "launch_path": "/repwho/",
   "icons": {
-    "128": "/img/icon-128.png"
+    "128": "/repwho/img/icon-128.png"
   },
   "developer": {
     "name": "Debloper & Pierros",
