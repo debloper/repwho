@@ -30,7 +30,7 @@
 	};
 
 	repwho.pushDOM = function () {
-		$("#rep_image").attr("data-id", repwho.id).attr("src", repwho.rep.profile.avatar_url + "&size=256");
+		$("#rep_image").attr("data-id", repwho.id).attr("src", repwho.rep.profile.avatar_url + "&size=150");
 		$("#rep_names").html(
 			"<button id='richtig'>"+ repwho.rep.fullname +"</button>" +
 			"<button class='falsch'>"+ repwho[repwho.mode].objects[repwho.random()].fullname +"</button>" +
@@ -42,7 +42,7 @@
 	repwho.reset = function () {
 		repwho.repeat();
 		$("#rep_quiz").show();
-		$("#baDumTss").html("");
+		$("#quiz_result").html("");
 		$("#quiz_result").hide();
 		$("#rep_image").attr("src", "");
 	};
@@ -62,12 +62,12 @@
 
 	$("#rep_names").on("click", "#richtig", function () {
 		$("#rep_quiz").hide();
-		$("#baDumTss").html("Yeehaw‎! xD");
+		$("#quiz_result").html("<h2 id='right'>Yeehaw‎! :D</h2>");
 		$("#quiz_result").show();
 		window.setTimeout(repwho.reset, 2000);
 	}).on("click", ".falsch", function () {
 		$("#rep_quiz").hide();
-		$("#baDumTss").html("Booooooo! :P");
+		$("#quiz_result").html("<h2 id='wrong'>Noooo :P That was " + repwho.rep.fullname + "!</h2>");
 		$("#quiz_result").show();
 		window.setTimeout(repwho.reset, 2000);
 	});
@@ -96,3 +96,24 @@
 	};
 
 })(jQuery);
+
+(function(){
+  function install(ev) {
+    ev.preventDefault();
+    // define the manifest URL
+    var manifest_url = "http://ppapadeas.github.io/repwho/manifest.webapp";
+    // install the app
+    var myapp = navigator.mozApps.install(manifest_url);
+    myapp.onsuccess = function(data) {
+      // App is installed, remove button
+      this.parentNode.removeChild(this);
+    };
+    myapp.onerror = function() {
+      // App wasn't installed, info is in this.error.name
+      console.log('Install failed, error: ' + this.error.name);
+     };
+  };
+  // get a reference to the button and call install() on click
+  var button = document.getElementById('install');
+  button.addEventListener('click', install, false);
+})();

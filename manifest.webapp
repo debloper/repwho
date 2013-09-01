@@ -1,0 +1,13 @@
+{
+  "name": "Rep Who",
+  "description": "Mozilla Rep Pic Quiz game",
+  "launch_path": "/",
+  "icons": {
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Debloper & Pierros",
+    "url": "http://reps.mozilla.org"
+  },
+  "default_locale": "en"
+}
