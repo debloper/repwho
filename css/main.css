@@ -1,32 +1,37 @@
-body {
+body , html {
     background-color: #eee;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-    width: 320px;
     margin: 0 auto;
+    font-size: 10px;
+    height: 100%;
+    overflow-x: hidden;
 }
 
-#title h1 {
-    color: #555;
+section[role="region"] {
+    padding-bottom: 1rem;
 }
 
-#mode_selector button {
-    display: inline-block;
-    margin: 20px 40px;
-    font-size: 1.3rem;
+#rep_names {
+    padding-top: 1rem;
+}
+
+section[role="status"] {
+    color: #999999 !important;
+}
+
+button {
+    width: 95% !important;
 }
 
 #footer {
-    margin-top: 40px;
     padding: 5px;
-    color: #999;
-    font-size: 0.8rem;
-    border-top: solid 1px #ccc;
+    font-size: 1.1rem;
 }
 
 #footer a {
     text-decoration: none;
-    color: purple;
+    color: #fff;
 }
 
 #rep_image {
@@ -37,12 +42,6 @@ body {
 
 #rep_quiz, #quiz_result {
     display: none;
-}
-
-#rep_names button{
-    margin: 0 auto;
-    margin-top: 10px;
-    display: block;
 }
 
 #quiz_result {
