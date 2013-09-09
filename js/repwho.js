@@ -30,7 +30,13 @@
 	};
 
 	repwho.pushDOM = function () {
-		$("#rep_image").attr("data-id", repwho.id).attr("src", repwho.rep.profile.avatar_url + "&size=150");
+		$("#progress").hide();
+		$("#rep_image").attr({
+			"data-id": repwho.id,
+			src: repwho.rep.profile.avatar_url + "&size=150",
+			width: 150,
+			height: 150
+		}).show();
 		$("#rep_names").html(
 			"<button id='richtig'>"+ repwho.rep.fullname +"</button>" +
 			"<button class='falsch'>"+ repwho[repwho.mode].objects[repwho.random()].fullname +"</button>" +
@@ -41,6 +47,7 @@
 
 	repwho.reset = function () {
 		repwho.repeat();
+		$("#result").hide();
 		$("#rep_quiz").show();
 		$("#quiz_result").html("");
 		$("#quiz_result").hide();
@@ -53,22 +60,30 @@
 	}
 
 	$("#mode_selector").on("click", "button", function () {
+		$("#back").show();
 		window.mode = $(this).data("mode");
 		repwho.go(mode);
 		$("#mode_selector").hide();
 		$("#rep_quiz").show();
+		$("#rep_names").show();
 	});
 
 	$("#rep_names").on("click", "#richtig", function () {
-		$("#rep_quiz").hide();
-		$("#quiz_result").html("<h2 id='right'>Yeehaw‎! :D</h2>");
-		$("#quiz_result").show();
+		$("#result").text("Yeehaw‎! :D");
+		$("#result").removeClass().addClass("right");
+		$("#result").show();
 		window.setTimeout(repwho.reset, 2000);
 	}).on("click", ".falsch", function () {
-		$("#rep_quiz").hide();
-		$("#quiz_result").html("<h2 id='wrong'>Noooo :P That was " + repwho.rep.fullname + "!</h2>");
-		$("#quiz_result").show();
+		$("#result").text("Noooo :P That was " + repwho.rep.fullname + "!");
+		$("#result").removeClass().addClass("wrong");
+		$("#result").show();
 		window.setTimeout(repwho.reset, 2000);
+	});
+	$("#back").on("click", function () {
+		$("#back").hide();
+		$("#rep_quiz").hide();
+		$("#rep_names").hide();
+		$("#mode_selector").show();
 	});
 })();
 

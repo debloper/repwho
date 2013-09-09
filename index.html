@@ -14,12 +14,14 @@
     <link href="shared/style/headers.css" rel="stylesheet" type="text/css">
     <link href="shared/style/buttons.css" rel="stylesheet" type="text/css">
     <link href="shared/style/status.css" rel="stylesheet" type="text/css">
+    <link href="shared/style_unstable/progress_activity.css" rel="stylesheet" type="text/css">
     
   </head>
   <body>
     <!-- Title -->
     <section role="region">
       <header id="title">
+        <button id="back"><span class="icon icon-back">back</span></button>
         <h1>Rep Who?</h1>
       </header>
     </section>
@@ -33,12 +35,12 @@
 
     <!-- Rep Quiz -->
     <div id="rep_quiz">
-      <img id="rep_image" />
+      <img id="rep_image"/>
+      <progress id="progress"></progress>
+      <!-- Results -->
+      <div id="result" class="right"></div>
+      </div>
       <div id="rep_names"></div>
-    </div>
-
-    <!-- Results -->
-    <div id="quiz_result">
     </div>
 
     <!-- Footer -->
