@@ -115,7 +115,7 @@
   function install(ev) {
     ev.preventDefault();
     // define the manifest URL
-    var manifest_url = "http://ppapadeas.github.io/repwho/manifest.webapp";
+    var manifest_url = "http://mozillareps.org/repwho/manifest.webapp";
     // install the app
     var myapp = navigator.mozApps.install(manifest_url);
     myapp.onsuccess = function(data) {
