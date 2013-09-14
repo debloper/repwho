@@ -27,6 +27,7 @@ section[role="region"] {
 #mode_selector {
     position: absolute;
     bottom: 3rem;
+    width: 100%;
 }
 
 section[role="status"] {
